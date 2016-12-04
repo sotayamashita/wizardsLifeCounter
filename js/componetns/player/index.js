@@ -3,10 +3,10 @@
  */
 'use strict';
 
-import React from "react";
-import type {Id, Score} from "../../types/";
-import styles from "./style";
-import {View, Text, TouchableHighlight} from "react-native";
+import React from 'react';
+import type {Id, Score} from '../../types/';
+import styles from './style';
+import {View, Text, TouchableHighlight} from 'react-native';
 
 type Props = {
   id: Id,

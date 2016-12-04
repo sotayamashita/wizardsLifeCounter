@@ -32,7 +32,7 @@ class WizardsLifeCounter extends React.Component {
 
   componentDidMount() {
     const { settings, dispatch }: Props = this.props;
-    for (let i = 0; i < settings.nPlayer; i+=1) {
+    for (let i = 0; i < settings.nPlayer; i++) {
       dispatch(addPlayer(settings.score));
     }
   }
