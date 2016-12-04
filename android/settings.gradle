@@ -1,0 +1,3 @@
+rootProject.name = 'wizardsLifeCounter'
+
+include ':app'

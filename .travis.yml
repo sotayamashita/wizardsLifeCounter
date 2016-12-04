@@ -1,0 +1,25 @@
+language: objective-c
+
+osx_image: xcode8
+
+install:
+  - mkdir -p /Users/travis/build/.nvm
+  - export NVM_DIR="/Users/travis/build/.nvm"
+  - brew install nvm
+  - source $(brew --prefix nvm)/nvm.sh
+  - nvm install 5
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
+  - if [[ "$TEST_TYPE" = js ]]; then npm run lint; fi
+  - if [[ "$TEST_TYPE" = js ]]; then npm run flow check; fi
+
+branches:
+  only: master
+
+notifications:
+  email: never
