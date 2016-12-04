@@ -7,10 +7,6 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10,
     borderRadius: 10,
     backgroundColor: '#4395f7',
   },
@@ -27,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   nameText: {
-    fontSize: 30,
+    fontSize: 20,
     color: '#a3d6f5',
   },
   score: {

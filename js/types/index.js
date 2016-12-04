@@ -24,6 +24,7 @@ export type State = {
 
 export type Action =
     { type: 'ADD_PLAYER', payload: { id: Id, score: Score }}
+  | { type: 'RESET_SCORE' }
   | { type: 'CHANGE_SCORE', payload: { id: Id, score: Score }}
   ;
 

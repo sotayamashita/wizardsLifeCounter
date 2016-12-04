@@ -1,1 +1,1 @@
-export { addPlayer, changeScore } from './players';
+export { addPlayer, changeScore, resetScore } from './players';

@@ -5,10 +5,14 @@
 
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
-  reset: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#eeeeee',
+  wrapper: {
+    margin: 10,
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  text: {
+    color: '#fff',
   }
 });
 

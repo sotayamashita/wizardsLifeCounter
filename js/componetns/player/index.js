@@ -18,7 +18,8 @@ type Props = {
 class Player extends React.Component {
 
   onChangeScore(id: Id, score: Score) {
-    this.props.onChangeScore(id, score);
+    const { onChangeScore }: Props = this.props;
+    onChangeScore(id, score);
   }
 
   // TODO Change method name
@@ -43,11 +44,15 @@ class Player extends React.Component {
         </View>
         <View style={styles.buttons}>
           <View style={styles.buttonsBody}>
-            <TouchableHighlight activeOpacity={0.7} underlayColor={'rgba(24, 110, 168, 0.3)'} style={styles.left}
+            <TouchableHighlight activeOpacity={0.7}
+                                underlayColor={'rgba(24, 110, 168, 0.3)'}
+                                style={styles.left}
                                 onPress={() => this.onChangeScore(id, -1)}>
               <Text style={styles.leftText}>-</Text>
             </TouchableHighlight>
-            <TouchableHighlight activeOpacity={0.7} underlayColor={'rgba(24, 110, 168, 0.3)'} style={styles.right}
+            <TouchableHighlight activeOpacity={0.7}
+                                underlayColor={'rgba(24, 110, 168, 0.3)'}
+                                style={styles.right}
                                 onPress={() => this.onChangeScore(id, +1)}>
               <Text style={styles.rightText}>+</Text>
             </TouchableHighlight>

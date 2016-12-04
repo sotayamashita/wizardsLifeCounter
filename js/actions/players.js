@@ -26,3 +26,9 @@ export const changeScore = (id: Id, score: Score): Action => {
     },
   };
 };
+
+export const resetScore = (): Action => {
+  return {
+    type: 'RESET_SCORE',
+  };
+};
