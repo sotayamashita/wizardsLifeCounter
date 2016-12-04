@@ -31,6 +31,11 @@ class Player extends React.Component {
     const {rotate, id, score}: Props = this.props;
     return (
       <View style={this._rotatable(rotate)}>
+        <View style={styles.name}>
+          <View style={styles.nameBody}>
+            <Text style={styles.nameText}>Player</Text>
+          </View>
+        </View>
         <View style={styles.score}>
           <View style={styles.scoreBody}>
             <Text style={styles.scoreText}>{score}</Text>

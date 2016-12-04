@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import type {State, Players, Dispatch} from './types';
+import type {State, Settings, Players, Dispatch} from './types';
 import type {Connector} from 'react-redux';
 import React from 'react';
 import {connect} from 'react-redux';
@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 
 export type Props = {
+  settings: Settings,
   players: Players,
   dispatch: Dispatch,
 };
@@ -30,9 +31,9 @@ class WizardsLifeCounter extends React.Component {
   }
 
   componentDidMount() {
-    // TODO Get number of player from setting
-    for (let i = 0; i < 2; i += 1) {
-      this.props.dispatch(addPlayer(20));
+    const { settings, dispatch }: Props = this.props;
+    for (let i = 0; i < settings.nPlayer; i+=1) {
+      dispatch(addPlayer(settings.score));
     }
   }
 
@@ -40,26 +41,31 @@ class WizardsLifeCounter extends React.Component {
     this.props.dispatch(changeScore(id, score));
   }
 
+  _generateScoreBoards(settings) {
+    const { players }: Props = this.props;
+    return (players.map((player, index) => {
+      const rotate = (index % 2 !== 0);
+      return <Player key={player.id}
+                     rotate={rotate}
+                     onChangeScore={this.changeScore.bind(this)}
+        {...player} />;
+    }));
+  }
+
   render() {
-    const {players}: Props = this.props;
+    const { settings }: Props = this.props;
     return (
       <View style={styles.reset}>
         <StatusBar hidden={true}/>
-        {players.map((player, index) => {
-          const rotate = (index % 2 !== 0);
-          return <Player key={player.id}
-                         rotate={rotate}
-                         onChangeScore={this.changeScore.bind(this)}
-            {...player} />;
-        })}
+        {this._generateScoreBoards(settings)}
       </View>
     );
   }
 }
 
-
 const mapStateToProps = (state: State) => {
   return {
+    settings: state.settings,
     players: state.players,
   };
 };

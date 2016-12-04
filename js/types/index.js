@@ -13,9 +13,12 @@ export type Player = {
   score: number,
 };
 
+export type Settings = Object;
+
 export type Players = Array<Player>;
 
 export type State = {
+  settings: Settings,
   players: Players,
 };
 
