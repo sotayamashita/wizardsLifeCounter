@@ -7,11 +7,10 @@ import type {State, Settings, Players, Dispatch} from '../../types';
 import type {Connector} from 'react-redux';
 import {connect} from 'react-redux';
 import React from 'react';
-import styles from './style';
-import Player from '../../componetns/player/';
-import Utility from '../../componetns/utility/';
+import Player from '../../components/player/';
+import Utility from '../../components/utility/';
 import { addPlayer, changeScore, resetScore } from '../../actions';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 export type Props = {
   settings: Settings,
@@ -83,6 +82,14 @@ class ScoreboardScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  reset: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: '#eeeeee',
+  }
+});
 
 const mapStateToProps = (state: State) => {
   return {
