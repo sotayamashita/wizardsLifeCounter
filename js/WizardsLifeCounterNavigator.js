@@ -11,7 +11,7 @@ import SettingsScreen from './containers/settings/SettingsScreen';
 const WizardsLifeCounterNavigator = () =>
   <Navigator
     configureScene={_configureScene}
-    initialRoute={{ name: 'Scoreboard' }}
+    initialRoute={{ name: 'Setting' }}
     renderScene={_renderScene} />;
 
 const _configureScene = (route, routeStack) => {

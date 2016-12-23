@@ -11,6 +11,7 @@ var HEADER_HEIGHT = Platform.OS === 'ios' ? 44 + STATUS_BAR_HEIGHT : 56 + STATUS
 const styles = StyleSheet.create({
   container: {
     height: HEADER_HEIGHT - STATUS_BAR_HEIGHT,
+    marginBottom: 30,
   },
   header: {
     height: HEADER_HEIGHT,
