@@ -4,7 +4,8 @@
 'use strict';
 
 import React from 'react';
-import Header from '../../components/header/';
+import WLHeader from '../../components/WLHeader';
+import StyledView from '../../components/StyledView';
 import { View, Text, Image, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 
 class SettingsScreen extends React.Component {
@@ -23,10 +24,10 @@ class SettingsScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Header name="Setting"
-                onUserClickRightButton={() => this._onUserClickCancel()}
-                onUserClickLeftButton={() => this._onUserClickSave()} />
+      <StyledView backgroundColor="#e0e0e0">
+        <WLHeader name="Setting"
+                  onUserClickRightButton={() => this._onUserClickCancel()}
+                  onUserClickLeftButton={() => this._onUserClickSave()} />
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Format</Text>
           <View style={styles.sectionBody}>
@@ -63,16 +64,12 @@ class SettingsScreen extends React.Component {
             {/* Format - Counter End */}
           </View>
         </View>
-      </View>
+      </StyledView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e0e0e0',
-  },
   sectionTitle: {
     color: '#586c7c',
     fontSize: 16,
