@@ -3,14 +3,14 @@
  */
 'use strict';
 
-import type {State, Settings, Players, Dispatch} from '../../types';
-import type {Connector} from 'react-redux';
-import {connect} from 'react-redux';
+import type { State, Settings, Players, Dispatch } from '../../types';
+import type { Connector } from 'react-redux';
+import { connect } from 'react-redux';
 import React from 'react';
-import Player from '../../components/player/';
-import Utility from '../../components/utility/';
+import WLPlayer from '../../components/WLPlayer';
+import WLUtility from '../../components/WLUtility';
+import StyledView from '../../components/StyledView';
 import { addPlayer, changeScore, resetScore } from '../../actions';
-import { View, StyleSheet } from 'react-native';
 
 export type Props = {
   settings: Settings,
@@ -19,12 +19,6 @@ export type Props = {
 };
 
 class ScoreboardScreen extends React.Component {
-
-  constructor(prop) {
-    super(prop);
-    this.settings = this.settings.bind(this);
-    this.onUserClickReset = this.onUserClickReset.bind(this);
-  }
 
   componentDidMount() {
     // TODO: Reconsider
@@ -41,7 +35,7 @@ class ScoreboardScreen extends React.Component {
     dispatch(changeScore(id, score));
   }
 
-  settings() {
+  settingScene() {
     this.props.navigator.push({
       name: 'Setting',
       type: 'left',
@@ -62,34 +56,26 @@ class ScoreboardScreen extends React.Component {
     const { players }: Props = this.props;
     let components = players.map((player, index) => {
       const rotate = (index % 2 !== 0);
-      return <Player key={player.id}
+      return <WLPlayer key={player.id}
                      rotate={rotate}
                      onChangeScore={this.changeScore.bind(this)}
                      {...player} />;
     });
     // TODO: magic number
-    components.splice(components.length / 2, 0, <Utility key={'utility'}
-                                                         onUserClickSettings={this.settings}
-                                                         onUserClickReset={this.onUserClickReset.bind(this)} />);
+    components.splice(components.length / 2, 0, <WLUtility key={'utility'}
+                                                         onUserClickSettings={() => this.settingScene()}
+                                                         onUserClickReset={() => this.onUserClickReset()} />);
     return components;
   }
 
   render() {
     return (
-      <View style={styles.reset}>
+      <StyledView theme="main">
         {this.generateScoreBoards()}
-      </View>
+      </StyledView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  reset: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#eeeeee',
-  }
-});
 
 const mapStateToProps = (state: State) => {
   return {
