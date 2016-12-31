@@ -4,8 +4,7 @@
 'use strict';
 
 import React from 'react';
-import styles from './style';
-import {View, Image, TouchableHighlight} from 'react-native';
+import {View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 
 type Props = {
   onUserClickSettings: () => void,
@@ -29,15 +28,27 @@ class Utility extends React.Component {
       <View style={styles.wrapper}>
         <TouchableHighlight underlayColor={'rgba(200, 200, 200, .3)'}
                             onPress={() => this.onUserClickSettings()}>
-          <Image source={require('../../assets/image/settings.ios.png')}/>
+          <Image source={require('../assets/image/settings.ios.png')}/>
         </TouchableHighlight>
         <TouchableHighlight underlayColor={'rgba(200, 200, 200, .3)'}
                             onPress={() => this.onUserClickReset()}>
-          <Image source={require('../../assets/image/replay.ios.png')} />
+          <Image source={require('../assets/image/replay.ios.png')} />
         </TouchableHighlight>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    margin: 10,
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  text: {
+    color: '#fff',
+  }
+});
 
 export default Utility;

@@ -4,20 +4,14 @@
 'use strict';
 
 import React from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
+import StyledView from './components/StyledView';
 import WizardsLifeCounterNavigator from './WizardsLifeCounterNavigator';
 
 const WizardsLifeCounter = () =>
-  <View style={styles.container}>
+  <StyledView>
     <StatusBar hidden={true} />
     <WizardsLifeCounterNavigator />
-  </View>;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#eee',
-  }
-});
+  </StyledView>;
 
 export default WizardsLifeCounter;
