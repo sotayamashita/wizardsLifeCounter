@@ -7,6 +7,7 @@ import React from 'react';
 import WLPlayer from '../common/WLPlayer';
 import WLUtility from '../common/WLUtility';
 import StyledView from '../common/StyledView';
+import { StatusBar } from 'react-native';
 import { addPlayer, changeScore, resetScore } from '../actions';
 
 export type Props = {
@@ -82,8 +83,10 @@ class ScoreboardScreen extends React.Component {
   }
 
   render() {
+    const { settings } = this.props;
     return (
       <StyledView theme="main">
+        <StatusBar hidden={!settings.isStatusBarEnabled} barStyle="dark-content" />
         {this.generateScoreBoards()}
       </StyledView>
     );

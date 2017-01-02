@@ -24,6 +24,7 @@ export type Action =
     { type: 'ADD_PLAYER', payload: { id: Id, score: Score }}
   | { type: 'RESET_SCORE' }
   | { type: 'CHANGE_SCORE', payload: { id: Id, score: Score }}
+  | { type: 'CHANGE_STATUS_BAR', payload: { isStatusBarEnabled: Boolean }}
   | { type: 'CHANGE_DEFAULT_SCORE', payload: {id: Id}}
   ;
 
