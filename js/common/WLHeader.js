@@ -1,7 +1,4 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native';

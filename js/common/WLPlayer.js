@@ -1,7 +1,4 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import React from 'react';
 import type {Id, Score} from '../types/';

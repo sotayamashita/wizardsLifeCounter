@@ -7,6 +7,7 @@
     "resolve-type": "flow-typed install",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' js/",
+    "lint:force": "eslint --format 'node_modules/eslint-friendly-formatter' js/ --fix",
     "flow": "flow"
   },
   "dependencies": {

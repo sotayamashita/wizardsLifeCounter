@@ -1,7 +1,4 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import type {Store} from './types';
 import React from 'react';

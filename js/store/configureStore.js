@@ -1,19 +1,12 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
-import {createStore, combineReducers} from 'redux';
-import * as reducers from '../reducers/';
+import { createStore, combineReducers } from 'redux';
+import { rootReducer } from '../reducers/';
 
-var isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
+const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
 export default function configureStore() {
-  const store = createStore(
-    combineReducers({
-      ...reducers,
-    }),
-  );
+  const store = createStore(combineReducers(rootReducer));
 
   if (isDebuggingInChrome) {
     window.store = store;

@@ -1,7 +1,4 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import React from 'react';
 import {View, Image, TouchableHighlight, StyleSheet } from 'react-native';
@@ -28,11 +25,11 @@ class Utility extends React.Component {
       <View style={styles.wrapper}>
         <TouchableHighlight underlayColor={'rgba(200, 200, 200, .3)'}
                             onPress={() => this.onUserClickSettings()}>
-          <Image source={require('../assets/image/settings.ios.png')}/>
+          <Image source={require('../scoreboard/image/settings.ios.png')}/>
         </TouchableHighlight>
         <TouchableHighlight underlayColor={'rgba(200, 200, 200, .3)'}
                             onPress={() => this.onUserClickReset()}>
-          <Image source={require('../assets/image/replay.ios.png')} />
+          <Image source={require('../scoreboard/image/replay.ios.png')} />
         </TouchableHighlight>
       </View>
     );

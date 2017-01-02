@@ -1,9 +1,6 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
-import type {Id, Score, Action} from '../types';
+import type { Id, Score, Action } from '../types';
 
 let nextTodoId: Id = 0;
 
