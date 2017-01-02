@@ -1,17 +1,14 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import React from 'react';
 import { Navigator } from 'react-native';
-import ScoreboardsScreen from './containers/scoreboard/ScoreboardScreen';
-import SettingsScreen from './containers/settings/SettingsScreen';
+import ScoreboardsScreen from './scoreboard/ScoreboardScreen';
+import SettingsScreen from './settings/SettingsScreen';
 
 const WizardsLifeCounterNavigator = () =>
   <Navigator
     configureScene={_configureScene}
-    initialRoute={{ name: 'Scoreboard' }}
+    initialRoute={{ name: 'Setting' }}
     renderScene={_renderScene} />;
 
 const _configureScene = (route, routeStack) => {

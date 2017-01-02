@@ -1,16 +1,13 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
-import type { State, Settings, Players, Dispatch } from '../../types';
+import type { State, Settings, Players, Dispatch } from '../types';
 import type { Connector } from 'react-redux';
 import { connect } from 'react-redux';
 import React from 'react';
-import WLPlayer from '../../components/WLPlayer';
-import WLUtility from '../../components/WLUtility';
-import StyledView from '../../components/StyledView';
-import { addPlayer, changeScore, resetScore } from '../../actions';
+import WLPlayer from '../common/WLPlayer';
+import WLUtility from '../common/WLUtility';
+import StyledView from '../common/StyledView';
+import { addPlayer, changeScore, resetScore } from '../actions';
 
 export type Props = {
   settings: Settings,
@@ -23,9 +20,10 @@ class ScoreboardScreen extends React.Component {
   componentDidMount() {
     // TODO: Reconsider
     const { settings, dispatch }: Props = this.props;
+    const score = this.getScores(settings);
     if (this.props.players.length === 0) {
       for (let i = 0; i < settings.nPlayer; i++) {
-        dispatch(addPlayer(settings.score));
+        dispatch(addPlayer(score));
       }
     }
   }
@@ -42,12 +40,27 @@ class ScoreboardScreen extends React.Component {
     });
   }
 
+  getScores(settings) {
+    console.log(settings);
+    const scores = settings.scores;
+    let value = 0;
+    for (let i = 0; i < scores.length; i += 1) {
+      if (scores[i].enable) {
+        value = scores[i].value;
+        break;
+      }
+    }
+
+    return value;
+  }
+
   onUserClickReset() {
     // TODO: Move it to action
     const { settings, dispatch }: Props = this.props;
+    const score = this.getScores(settings);
     dispatch(resetScore());
     for (let i = 0; i < settings.nPlayer; i++) {
-      dispatch(addPlayer(settings.score));
+      dispatch(addPlayer(score));
     }
   }
 

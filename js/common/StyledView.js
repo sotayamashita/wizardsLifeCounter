@@ -1,6 +1,4 @@
-/**
- * @flow
- */
+// @flow
 
 import styled from 'styled-components/native';
 const StyleView = styled.View`

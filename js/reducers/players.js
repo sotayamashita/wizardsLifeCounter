@@ -1,42 +1,43 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
-import type {Action, Players, Player, Id, Score} from '../types';
+import { createReducer } from './';
+import type { Action, Players } from '../types';
 
 const initialState = [];
 
-function createPlayer(id: Id, score: Score): Player {
-  return {
-    id,
-    score,
-  };
+// Case reducer
+function addPlayer(playersState: Players, action: Action) {
+  return [
+    ...playersState,
+    {
+      id: action.payload.id,
+      score: action.payload.score,
+    }
+  ];
 }
 
-function changeScore(players: Players, id: Id, score: Score) {
-  return players.map(player => {
-    if (player.id !== id) {
+// Case reducer
+function changeScore(playersState: Players, action: Action) {
+  return playersState.map((player) => {
+    if (player.id !== action.payload.id) {
       return player;
     }
-    return Object.assign({}, player, {
-      score: player.score + score,
-    });
+
+    return {
+      ...player,
+      score: player.score + action.payload.score,
+    };
   });
 }
 
-export const players = (state: Players = initialState, action: Action): Players => {
-  switch (action.type) {
-    case 'ADD_PLAYER':
-      return [
-        ...state,
-        createPlayer(action.payload.id, action.payload.score),
-      ];
-    case 'CHANGE_SCORE':
-      return changeScore(state, action.payload.id, action.payload.score);
-    case 'RESET_SCORE':
-      return initialState;
-    default:
-      return state;
-  }
-};
+// Case reducer
+function resetScore() {
+  return initialState;
+}
+
+// Slice reducer
+export const playersReducer = createReducer(initialState, {
+  'ADD_PLAYER' : addPlayer,
+  'CHANGE_SCORE' : changeScore,
+  'RESET_SCORE' : resetScore,
+});

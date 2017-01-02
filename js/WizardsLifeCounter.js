@@ -1,11 +1,8 @@
-/**
- * @flow
- */
-'use strict';
+// @flow
 
 import React from 'react';
 import { StatusBar } from 'react-native';
-import StyledView from './components/StyledView';
+import StyledView from './common/StyledView';
 import WizardsLifeCounterNavigator from './WizardsLifeCounterNavigator';
 
 const WizardsLifeCounter = () =>
