@@ -4,7 +4,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 import { StyledItem, StyledItemIcon, StyledItemIconImage, StyledItemContent } from './StyledItem';
 
-const ScoresItem = ({ isDarkThemeEnabled, onUserChangeDarkTheme }) => {
+const DarkThemeItem = ({ isDarkThemeEnabled, onUserChangeDarkTheme }) => {
   return (
     <StyledItem>
       <StyledItemIcon>
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScoresItem;
+export default DarkThemeItem;
