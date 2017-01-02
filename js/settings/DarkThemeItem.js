@@ -4,17 +4,17 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Switch, StyleSheet } from 'react-native';
 import { StyledItem, StyledItemIcon, StyledItemIconImage, StyledItemContent } from './StyledItem';
 
-const StatusBarItem = ({ isStatusBarEnabled, onUserChangeStatusBar }) => {
+const DarkThemeItem = ({ isDarkThemeEnabled, onUserChangeDarkTheme }) => {
   return (
     <StyledItem>
       <StyledItemIcon>
-        <StyledItemIconImage source={require('./image/battery.ios.png')}/>
+        <StyledItemIconImage source={require('./image/phone.ios.png')}/>
       </StyledItemIcon>
       <StyledItemContent>
         <View style={styles.container}>
-          <Text style={styles.text}>Show the status bar</Text>
-          <Switch onValueChange={(value) => onUserChangeStatusBar(value)}
-                  value={isStatusBarEnabled}/>
+          <Text style={styles.text}>Uee the dark theme</Text>
+          <Switch onValueChange={(value) => onUserChangeDarkTheme(value)}
+                  value={isDarkThemeEnabled}/>
         </View>
       </StyledItemContent>
     </StyledItem>
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StatusBarItem;
+export default DarkThemeItem;

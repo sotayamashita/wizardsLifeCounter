@@ -3,7 +3,7 @@
 import styled from 'styled-components/native';
 
 export const StyledItem = styled.View`
-  borderBottomWidth: 1;
+  borderBottomWidth: 0.5;
   backgroundColor: #fff;
   borderBottomColor: #ccd6dd;
   flexDirection: row;

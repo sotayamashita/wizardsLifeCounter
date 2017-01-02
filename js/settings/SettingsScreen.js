@@ -7,10 +7,11 @@ import { connect } from 'react-redux';
 import WLHeader from '../common/WLHeader';
 import StyledView from '../common/StyledView';
 import { StyledSection, StyledSectionTitle, StyledSectionBody } from './StyledSection';
+import DarkThemeItem from './DarkThemeItem';
 import StatusBarItem from './StatusBarItem';
 import ScoresItem from './ScoresItem';
 import { StatusBar } from 'react-native';
-import { changeStatusBar, changeDefaultScore } from '../actions';
+import { changeDarkTheme, changeStatusBar, changeDefaultScore } from '../actions';
 
 export type Props = {
   settings: Settings,
@@ -29,6 +30,10 @@ class SettingsScreen extends React.Component {
     this.props.navigator.push({
         name: 'Scoreboard',
     });
+  }
+
+  onUserChangeDarkTheme(value) {
+    this.props.dispatch(changeDarkTheme(value));
   }
 
   onUserChangeStatusBar(value) {
@@ -54,6 +59,10 @@ class SettingsScreen extends React.Component {
         <StyledSection>
           <StyledSectionTitle>Look & Feel</StyledSectionTitle>
           <StyledSectionBody>
+            <DarkThemeItem
+              isDarkThemeEnabled={settings.isDarkThemeEnabled}
+              onUserChangeDarkTheme={(value) => this.onUserChangeDarkTheme(value)}
+            />
             <StatusBarItem
               isStatusBarEnabled={settings.isStatusBarEnabled}
               onUserChangeStatusBar={(value) => this.onUserChangeStatusBar(value)}
