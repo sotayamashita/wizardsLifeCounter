@@ -85,8 +85,8 @@ class ScoreboardScreen extends React.Component {
   render() {
     const { settings } = this.props;
     return (
-      <StyledView theme="main">
-        <StatusBar hidden={!settings.isStatusBarEnabled} barStyle="dark-content" />
+      <StyledView theme="main" isDarkThemeEnabled={settings.isDarkThemeEnabled}>
+        <StatusBar hidden={!settings.isStatusBarEnabled} barStyle={(settings.isDarkThemeEnabled) ? 'light-content' : 'dark-content'}/>
         {this.generateScoreBoards()}
       </StyledView>
     );

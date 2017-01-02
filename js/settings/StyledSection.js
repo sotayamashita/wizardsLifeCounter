@@ -16,6 +16,6 @@ export const StyledSectionTitle = styled.Text`
 `;
 
 export const StyledSectionBody = styled.View`
-  borderTopWidth: 1;
+  borderTopWidth: 0.5;
   borderTopColor: #ccd6dd;
 `;

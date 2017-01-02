@@ -5,6 +5,7 @@ import type { Settings, Action } from '../types';
 
 const initialState = {
   nPlayer: 2,
+  isDarkThemeEnabled: false,
   isStatusBarEnabled: false,
   scores: [
     {
@@ -33,6 +34,13 @@ const initialState = {
     }
   ],
 };
+
+// Case reducer
+function changeDarkTheme(settingState: Settings, action: Action) {
+  return Object.assign({}, settingState, {
+    isDarkThemeEnabled: action.payload.isDarkThemeEnabled,
+  });
+}
 
 // Case reducer
 function changeStatusBar(settingsState: Settings, action: Action) {
@@ -69,6 +77,7 @@ function changeDefaultScore(settingsState: Settings, action: Action) {
 
 // Slice reducer
 export const settingsReducer = createReducer(initialState, {
-  'CHANGE_STATUS_BAR': changeStatusBar,
-  'CHANGE_DEFAULT_SCORE': changeDefaultScore,
+  'CHANGE_DARK_THEME' : changeDarkTheme,
+  'CHANGE_STATUS_BAR' : changeStatusBar,
+  'CHANGE_DEFAULT_SCORE' : changeDefaultScore,
 });
