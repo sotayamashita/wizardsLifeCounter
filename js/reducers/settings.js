@@ -5,6 +5,7 @@ import type { Settings, Action } from '../types';
 
 const initialState = {
   nPlayer: 2,
+  isStatusBarEnabled: false,
   scores: [
     {
       id: 1,
@@ -34,6 +35,13 @@ const initialState = {
 };
 
 // Case reducer
+function changeStatusBar(settingsState: Settings, action: Action) {
+  return Object.assign({}, settingsState, {
+    isStatusBarEnabled: action.payload.isStatusBarEnabled,
+  });
+}
+
+// Case reducer
 function changeDefaultScore(settingsState: Settings, action: Action) {
   return Object.assign({}, settingsState, {
     scores: settingsState.scores.map(score => {
@@ -61,5 +69,6 @@ function changeDefaultScore(settingsState: Settings, action: Action) {
 
 // Slice reducer
 export const settingsReducer = createReducer(initialState, {
+  'CHANGE_STATUS_BAR': changeStatusBar,
   'CHANGE_DEFAULT_SCORE': changeDefaultScore,
 });

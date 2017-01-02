@@ -7,7 +7,7 @@ import WizardsLifeCounterNavigator from './WizardsLifeCounterNavigator';
 
 const WizardsLifeCounter = () =>
   <StyledView>
-    <StatusBar hidden={true} />
+    <StatusBar />
     <WizardsLifeCounterNavigator />
   </StyledView>;
 

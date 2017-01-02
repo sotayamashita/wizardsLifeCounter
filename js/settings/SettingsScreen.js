@@ -7,8 +7,10 @@ import { connect } from 'react-redux';
 import WLHeader from '../common/WLHeader';
 import StyledView from '../common/StyledView';
 import { StyledSection, StyledSectionTitle, StyledSectionBody } from './StyledSection';
+import StatusBarItem from './StatusBarItem';
 import ScoresItem from './ScoresItem';
-import { changeDefaultScore } from '../actions';
+import { StatusBar } from 'react-native';
+import { changeStatusBar, changeDefaultScore } from '../actions';
 
 export type Props = {
   settings: Settings,
@@ -29,6 +31,10 @@ class SettingsScreen extends React.Component {
     });
   }
 
+  onUserChangeStatusBar(value) {
+    this.props.dispatch(changeStatusBar(value));
+  }
+
   onUserClickChangeScore(score) {
     if (!score.enable) {
       this.props.dispatch(changeDefaultScore(score.id));
@@ -39,13 +45,28 @@ class SettingsScreen extends React.Component {
     const { settings } = this.props;
     return (
       <StyledView backgroundColor="#e0e0e0">
-        <WLHeader name="Setting"
-                  onUserClickRightButton={() => this.onUserClickCancel()}
-                  onUserClickLeftButton={() => this.onUserClickSave()} />
+        <StatusBar hidden={!settings.isStatusBarEnabled} barStyle="light-content"/>
+        <WLHeader
+          name="Setting"
+          onUserClickRightButton={() => this.onUserClickCancel()}
+          onUserClickLeftButton={() => this.onUserClickSave()}
+        />
+        <StyledSection>
+          <StyledSectionTitle>Look & Feel</StyledSectionTitle>
+          <StyledSectionBody>
+            <StatusBarItem
+              isStatusBarEnabled={settings.isStatusBarEnabled}
+              onUserChangeStatusBar={(value) => this.onUserChangeStatusBar(value)}
+            />
+          </StyledSectionBody>
+        </StyledSection>
         <StyledSection>
           <StyledSectionTitle>Format</StyledSectionTitle>
           <StyledSectionBody>
-            <ScoresItem scores={settings.scores} onUserClickChangeScore={(score) => this.onUserClickChangeScore(score)}/>
+            <ScoresItem
+              scores={settings.scores}
+              onUserClickChangeScore={(score) => this.onUserClickChangeScore(score)}
+            />
           </StyledSectionBody>
         </StyledSection>
       </StyledView>
