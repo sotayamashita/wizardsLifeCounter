@@ -9,10 +9,6 @@ class Header extends  Component {
     super();
   }
 
-  _onUserClickLeftButton() {
-    this.props.onUserClickLeftButton();
-  }
-
   _onUserClickRightButton() {
     this.props.onUserClickRightButton();
   }
@@ -23,9 +19,8 @@ class Header extends  Component {
         <View style={styles.header}>
           <TouchableOpacity accessibilityLabel="Cancel"
                             accessibilityTraits="button"
-                            style={styles.leftItem}
-                            onPress={() => this._onUserClickLeftButton()}>
-            <Text style={styles.titleText}>Cancel</Text>
+                            style={styles.leftItem}>
+            <Text style={styles.titleText}></Text>
           </TouchableOpacity>
           <View style={styles.centerItem}>
             <Text style={styles.titleText}>{this.props.name}</Text>
@@ -34,7 +29,7 @@ class Header extends  Component {
                             accessibilityTraits="button"
                             style={styles.rightItem}
                             onPress={() => this._onUserClickRightButton()}>
-            <Text style={styles.titleText}>Save</Text>
+            <Text style={styles.optionText}>Done</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -74,8 +69,13 @@ const styles = StyleSheet.create({
   titleText: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 16,
   },
+  optionText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  }
 });
 
 export default Header;
