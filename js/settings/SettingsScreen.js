@@ -10,6 +10,7 @@ import { StyledSection, StyledSectionTitle, StyledSectionBody } from './StyledSe
 import DarkThemeItem from './DarkThemeItem';
 import StatusBarItem from './StatusBarItem';
 import ScoresItem from './ScoresItem';
+import CodeItem from './CodeItem';
 import { StatusBar } from 'react-native';
 import { changeDarkTheme, changeStatusBar, changeDefaultScore } from '../actions';
 
@@ -20,15 +21,9 @@ export type Props = {
 
 class SettingsScreen extends React.Component {
 
-  onUserClickCancel() {
+  onUserClickDene() {
     this.props.navigator.push({
       name: 'Scoreboard',
-    });
-  }
-
-  onUserClickSave() {
-    this.props.navigator.push({
-        name: 'Scoreboard',
     });
   }
 
@@ -52,12 +47,11 @@ class SettingsScreen extends React.Component {
       <StyledView backgroundColor="#e0e0e0">
         <StatusBar hidden={!settings.isStatusBarEnabled} barStyle="light-content"/>
         <WLHeader
-          name="Setting"
-          onUserClickRightButton={() => this.onUserClickCancel()}
-          onUserClickLeftButton={() => this.onUserClickSave()}
+          name="Settings"
+          onUserClickRightButton={() => this.onUserClickDene()}
         />
         <StyledSection>
-          <StyledSectionTitle>Look & Feel</StyledSectionTitle>
+          <StyledSectionTitle>Appearance & Behavior</StyledSectionTitle>
           <StyledSectionBody>
             <DarkThemeItem
               isDarkThemeEnabled={settings.isDarkThemeEnabled}
@@ -76,6 +70,12 @@ class SettingsScreen extends React.Component {
               scores={settings.scores}
               onUserClickChangeScore={(score) => this.onUserClickChangeScore(score)}
             />
+          </StyledSectionBody>
+        </StyledSection>
+        <StyledSection>
+          <StyledSectionTitle>About</StyledSectionTitle>
+          <StyledSectionBody>
+            <CodeItem />
           </StyledSectionBody>
         </StyledSection>
       </StyledView>
