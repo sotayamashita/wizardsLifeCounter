@@ -8,14 +8,17 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' js/",
     "lint:force": "eslint --format 'node_modules/eslint-friendly-formatter' js/ --fix",
-    "flow": "flow"
+    "flow": "flow",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "react": "15.4.1",
     "react-native": "0.39.0",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
-    "styled-components": "^1.2.1"
+    "styled-components": "^1.2.1",
+    "snyk": "^1.31.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -33,5 +36,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "snyk": true
 }
